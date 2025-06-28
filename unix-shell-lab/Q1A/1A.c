@@ -1,17 +1,26 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
-int main() {
-        int src = open("src.txt", O_RDONLY);
-        int dest = open("dest.txt", O_WRONLY);
-        char buf[100];
-        int pos = lseek(src, 0, SEEK_END);
+int main(int argc, char *argv[]) {
 
-        while (--pos >= 0) {
-                lseek(src, pos, SEEK_SET);
-                read(src, buf, 1);
-                write(dest, buf, 1);
+        struct stat st;
+
+        if (argc < 3) {
+                printf("Usage %s <src> <dest>\n", argv[0]);
+                return 0;
         }
-        return 0;
-}
+
+        int src = open(argv[1], O_RDONLY);
+        if (src == -1) {
+                printf("%s doesn't exist\n", argv[1]);
+                return 0;
+        }
+
+        int dest = open(argv[2], O_CREAT | O_WRONLY, 0777);
+        if (dest == -1) {
+                printf("%s doesn't exist\n", argv[1]);
+                return 0;
+       
