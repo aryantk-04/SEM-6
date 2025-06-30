@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <h2>Text Translation</h2>
+        Text: <input type = "text" placeholder = "Enter the text here" id = "rov" /><br><br>
+        <button onClick = "translateTxt()">Translate</button>
+        <p id = "result"></p>
+        <script>
+            function translateTxt() {
+                var str = document.getElementById("rov").value;
+                let res = "";
+
+                for (let i = 0; i < str.length; i++) {
+                    if ('aeiouAEIOU '.includes(str[i])) {
+                        res += str[i];
+                    }
+                    else {
+                        res += str[i] + 'o' + str[i];
+                    }
+                }
+                document.getElementById("result").innerHTML = res;
+            }
+        </script>
+    </body>
+</html>
