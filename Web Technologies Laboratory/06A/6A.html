@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Example</title>
+    <script src = "/react/react.development.js"></script>
+    <script src = "/react/react-dom.development.js"></script>
+    <script src = "/react/babel.min.js"></script>
+</head>
+<body>
+    <div id = "root"></div>
+    <script type = "text/babel">
+        function NameDetails() {
+            const [name, setName] = React.useState();
+
+            const handleChange = (event) => {
+                setName(event.target.value);
+            };
+
+            return (
+                <div>
+                    <input type = "text" value = {name} onChange = {handleChange} placeholder = "Enter Text Here" /><br/>
+                    <h1>{name}</h1>
+                </div>
+            );
+        }
+        ReactDOM.render(<NameDetails />, document.getElementById("root"));
+    </script>
+</body>
+</html>
