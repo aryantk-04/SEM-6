@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Bad to Good</title>
+</head>
+<body>
+    <input type = "text" id = "sentence" placeholder = "Enter Sentence" /><br/>
+    <button onclick = "notBad()">Convert</button>
+    <p id = "root"></p>
+    <script>
+        function notBad() {
+            const str = document.getElementById("sentence").value.toLowerCase();
+            const notIndex = str.indexOf("not");
+            const badIndex = str.indexOf("bad");
+
+            let result = str;
+
+            if (notIndex !== -1 && badIndex !== -1 && notIndex < badIndex) {
+                const beforeNot = str.slice(0, notIndex);
+                const afterBad = str.slice(badIndex + 3);
+                result = beforeNot + "good" + afterBad;
+            }
+            document.getElementById("root").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
