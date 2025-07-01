@@ -1,24 +1,29 @@
-<html>
-    <body>
-        <h2>Text Translation</h2>
-        Text: <input type = "text" placeholder = "Enter the text here" id = "rov" /><br><br>
-        <button onClick = "translateTxt()">Translate</button>
-        <p id = "result"></p>
-        <script>
-            function translateTxt() {
-                var str = document.getElementById("rov").value;
-                let res = "";
-
-                for (let i = 0; i < str.length; i++) {
-                    if ('aeiouAEIOU '.includes(str[i])) {
-                        res += str[i];
-                    }
-                    else {
-                        res += str[i] + 'o' + str[i];
-                    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate Function</title>
+</head>
+<body>
+    <h3>Translate Function</h3>
+    Sentence: <input type = "text" id = "sentence" placeholder = "Enter a sentence" required /><br><br>
+    <button onclick = "translateTxt()">Translate</button>
+    <p id = "res"></p>
+    <script>
+        function translateTxt() {
+            const str = document.getElementById("sentence").value;
+            let result = "";
+            for (let i = 0; i < str.length; i++) {
+                if ('aeiouAEIOU '.includes([str[i]])) {
+                    result += str[i];
                 }
-                document.getElementById("result").innerHTML = res;
+                else {
+                    result += str[i] + 'o' + str[i];
+                }
             }
-        </script>
-    </body>
+            document.getElementById("res").innerText = result;
+        }
+    </script>
+</body>
 </html>
