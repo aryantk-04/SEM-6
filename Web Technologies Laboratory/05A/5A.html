@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pluralize Function</title>
+</head>
+<body>
+    <h3>Pluralize</h3>
+    Noun: <input type = "text" id = "noun" placeholder = "Enter Noun" /><br><br>
+    Number: <input type = "text" id = "num" placeholder = "Enter Number" /><br><br>
+    <button onclick = "pluralize()">Pluralize</button>
+    <p id = "result"></p>
+    <script>
+        function pluralize() {
+            const noun = document.getElementById("noun").value;
+            const num = parseInt(document.getElementById("num").value);
+
+            if (num === 1) {
+                document.getElementById("result").innerHTML = `${num} ${noun}`;
+            }
+            else {
+                if (noun === "sheep") {
+                    document.getElementById("result").innerHTML = `${num} ${noun}`;
+                }
+                else if (noun === "goose") {
+                    document.getElementById("result").innerHTML = `${num} geese`;
+                }
+                else {
+                    document.getElementById("result").innerHTML = `${num} ${noun}s`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
