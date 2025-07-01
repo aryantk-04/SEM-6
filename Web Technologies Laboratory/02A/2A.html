@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Month Number to Month Name</title>
+</head>
+<body>
+    <h3>Number to Month Converter</h3>
+    Month Number: <input type = "text" id = "month" placeholder = "Enter month number (1- 12) required" /><br><br>
+    <button onclick = "numToMonth()">Number to Month</button>
+    <p id = "res"></p>
+    <script>
+        function monthDetails(month) {
+            const names = ["January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December"
+            ];
+            return {
+                getDetails() {
+                    const parsedMonth = parseInt(month);
+                    if (parsedMonth >= 1 || parsedMonth <= 12) {
+                        return names[parsedMonth - 1];
+                    }
+                    else {
+                        return "Bad Number";
+                    }
+                }
+            }
+        }
+
+        function numToMonth() {
+            const month = document.getElementById("month").value;
+            const result = monthDetails(month);
+            const monthName = result.getDetails();
+            document.getElementById("res").innerText = monthName; 
+        }
+    </script>
+</body>
+</html>
