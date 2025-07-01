@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIE and SEE Closures</title>
+</head>
+<body>
+    USN: <input type = "text" id = "usn" placeholder = "USN" required /><br><br>
+    Subject Code: <input type = "text" id = "subcode" placeholder = "Subject Code" required /><br><br>
+    Subject Name: <input type = "text" id = "subname" placeholder = "Subject Name" required /><br><br>
+    CIE Marks: <input type = "text" id = "cie" placeholder = "CIE Marks" required /><br><br>
+    SEE Marks: <input type = "text" id = "see" placeholder = "SEE Marks" required /><br><br>
+    <button onclick = "calculateMarks()">Calculate Marks</button>
+    <p id = "res"></p>
+    <script>
+        function calculate(usn, subcode, subname, cie, see) {
+            return {
+                getDetails() {
+                    const parsedCIE = parseInt(cie);
+                    const parsedSEE = parseInt(see);
+                    return {
+                        usn, subcode, subname, total: parsedCIE + parsedSEE
+                    }
+                }
+            }
+        }
+
+        function calculateMarks() {
+            const usn = document.getElementById("usn").value;
+            const subcode = document.getElementById("subcode").value;
+            const subname = document.getElementById("subname").value;
+            const cie = document.getElementById("cie").value;
+            const see = document.getElementById("see").value;
+
+            const calcMarks = calculate(usn, subcode, subname, cie, see);
+            const result = calcMarks.getDetails();
+
+            document.getElementById("res").innerHTML = `
+            <h3>Student Details</h3>
+            USN: ${result.usn} Subject Code: ${result.subcode} Subject Name: ${result.subname} Total: ${result.total} 
+            `;
+        }
+    </script>
+
+</body>
+</html>
