@@ -1,0 +1,8 @@
+{
+    "name" : "vowel-counter",
+    "version" : "1.0.0",
+    "main" : "8A.js",
+    "scripts" : {
+        "start" : "node 8A.js"
+    }
+}
